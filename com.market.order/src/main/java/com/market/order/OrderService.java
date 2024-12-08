@@ -28,6 +28,7 @@ public class OrderService {
 
         orderStore.put(order.getOrderId(), order);
 
+        // order DB 에 저장하고 메시지 보내기
         log.info("send Message : {}",deliveryMessage.toString());
 
         rabbitTemplate.convertAndSend(productQueue, deliveryMessage);
